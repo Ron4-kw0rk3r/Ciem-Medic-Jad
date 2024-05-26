@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+/* este es el mini frontend que tendra la pagina inicial.*/
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+
+header {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+button {
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
+}

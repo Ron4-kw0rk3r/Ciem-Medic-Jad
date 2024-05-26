@@ -1,0 +1,29 @@
+#### vscode configs 
+
+## extencions 
+
+## html, java, spring, css, javascript , server
+
+
+-- auto rename tag
+-- spring extencion pack 
+-- code runner
+-- intellsense for css class names in html
+
+-- prettier
+
+-- color highlight
+
+-- path intelsense
+
+-- javascript (ES6) code snippets 
+
+-- quokka.js
+
+---- settings finnish 
+
+-- Material icon theme 
+
+-- theme 'Monokai pro'
+
+ 
