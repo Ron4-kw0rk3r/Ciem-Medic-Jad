@@ -1,5 +1,7 @@
 ## Ciem Medic Jad
 
+![logPrev](https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/res/log-prev.png) 
+
 
 **Desarrollo Inicial: Perspectiva en Vivo de Ciem**
 
@@ -10,15 +12,35 @@
 
 
 
+<style>
+    img {
+        width: 80%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin: 20px 0;
+    }
+</style>
+<style>
+    img {
+        width: 80%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin: 20px 0;
+    }
+</style>
 
-## Proposito de Idea a Mejorar
+## Propósito de Idea a Mejorar
 
-![NuevaIdea](https://github.com/Ron4-kw0rk3r/Admin-Medico/blob/master/DB/photo_2024-04-16_23-06-14.jpg) 
+<img src="https://github.com/Ron4-kw0rk3r/Admin-Medico/blob/master/DB/photo_2024-04-16_23-06-14.jpg" alt="Nueva Idea">
 
-## complemento
+## Complemento
 
-![Objetivo](https://github.com/Ron4-kw0rk3r/Admin-Medico/blob/master/DB/photo_2024-04-16_23-06-17.jpg)
+<img src="https://github.com/Ron4-kw0rk3r/Admin-Medico/blob/master/DB/photo_2024-04-16_23-06-17.jpg" alt="Objetivo">
 
 ## Desarrollo de Continuidad
 
-![DevNew2](https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad)
+<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/res/picture-1.jpg" alt="Desarrollo Continuo">
+
+## Verificación Email@add.com
+
+<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/res/picture-2.jpg" alt="Verificación de Email">
