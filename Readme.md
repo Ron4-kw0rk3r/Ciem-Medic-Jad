@@ -11,24 +11,7 @@
 <p>Con un objetivo óptimo para complementar su desarrollo y acción en el mercado de la medicina y el aprendizaje, con una coherencia sobre la medicina que se tiene en el país, desarrollando una base de información sobre la medicina natural y métodos de búsqueda automatizada de preferencia en documentos de interés sobre la medicina natural.</p>
 
 
-
-<style>
-    img {
-        width: 80%;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        margin: 20px 0;
-    }
-</style>
-<style>
-    img {
-        width: 80%;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        margin: 20px 0;
-    }
-</style>
-
+<!-- Markdown does not support style tags directly. To apply styles, consider using inline styles with HTML or adjusting the styles in a separate CSS file linked to HTML documents where this markdown is rendered. -->
 ## Propósito de Idea a Mejorar
 
 <img src="https://github.com/Ron4-kw0rk3r/Admin-Medico/blob/master/DB/photo_2024-04-16_23-06-14.jpg" alt="Nueva Idea">
