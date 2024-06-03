@@ -1,6 +1,6 @@
 ## Ciem Medic Jad
 
-![logPrev](https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/res/log-prev.png) 
+![logPrev](https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/9dfa2cfa25160c4ba0d463dda40b28f694d6c897/res/log-prev.png) 
 
 
 **Desarrollo Inicial: Perspectiva en Vivo de Ciem**
@@ -39,8 +39,8 @@
 
 ## Desarrollo de Continuidad
 
-<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/res/picture-1.jpg" alt="Desarrollo Continuo">
+<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/9dfa2cfa25160c4ba0d463dda40b28f694d6c897/res/picture-1.jpg" alt="Desarrollo Continuo">
 
 ## Verificación Email@add.com
 
-<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/res/picture-2.jpg" alt="Verificación de Email">
+<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/9dfa2cfa25160c4ba0d463dda40b28f694d6c897/res/picture-2.jpg" alt="Verificación de Email">
