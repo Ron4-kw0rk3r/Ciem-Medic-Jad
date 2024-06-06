@@ -12,6 +12,6 @@ public class newpageController {
     @RequestMapping("/helloprow")
     
     public String helloprow() {
-        return "Main New page Welcome";
+        return "Mi primera vez en SpringBoot un 05 de junio del 2024";
     }
 }
