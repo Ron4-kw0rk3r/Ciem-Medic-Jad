@@ -31,6 +31,7 @@ public class LoginUsuario {
     private Usuario usuario;
 
     public LoginUsuario() {}
+    // Constructor vacío necesario para JPA
 
     public LoginUsuario(String nombreOsemilla, String contrasena, Usuario usuario) {
         this.nombreOsemilla = nombreOsemilla;

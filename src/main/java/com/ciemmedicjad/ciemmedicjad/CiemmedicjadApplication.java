@@ -7,11 +7,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.ciemmedicjad.ciemmedicjad")
 @EntityScan(basePackages = "com.ciemmedicjad.ciemmedicjad.modelo")
 @EnableJpaRepositories(basePackages = "com.ciemmedicjad.ciemmedicjad.repositorio")
 
