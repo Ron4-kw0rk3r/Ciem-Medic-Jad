@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuraciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .config-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .config-section {
+            margin-bottom: 20px;
+        }
+        .config-section h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #555;
+        }
+        .config-section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .config-section input[type="text"], 
+        .config-section select, 
+        .config-section input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .config-section button {
+            background-color: #202335;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .config-section button:hover {
+            background-color: #202335;
+        }
+    </style>
+</head>
+<body>
+    <h1>Configuraciones</h1>
+    <div class="config-container">
+        <div class="config-section">
+            <h2>Seleccionar motor de búsqueda</h2>
+            <label for="search-engine">Motor de búsqueda predeterminado:</label>
+            <select id="search-engine" name="search-engine">
+                <option value="google">Google</option>
+                <option value="bing">Bing</option>
+                <option value="duckduckgo">DuckDuckGo</option>
+                <option value="yahoo">Yahoo</option>
+            </select>
+        </div>
+        <div class="config-section">
+            <h2>Cambiar nombre de perfil</h2>
+            <label for="profile-name">Nombre de perfil:</label>
+            <input type="text" id="profile-name" name="profile-name">
+        </div>
+        <div class="config-section">
+            <h2>Exportación de datos</h2>
+            <label for="data-export">Exportar datos:</label>
+            <button id="data-export" name="data-export">Exportar</button>
+        </div>
+        <div class="config-section">
+            <h2>Tipo de selección</h2>
+            <label for="selection-type">Tipo de selección:</label>
+            <select id="selection-type" name="selection-type">
+                <option value="simple">Simple</option>
+                <option value="multiple">Múltiple</option>
+            </select>
+        </div>
+        <div class="config-section">
+            <h2>Notificaciones</h2>
+            <label for="notifications">Activar notificaciones:</label>
+            <input type="checkbox" id="notifications" name="notifications">
+        </div>
+        <div class="config-section">
+            <h2>Cambiar imagen de perfil</h2>
+            <label for="profile-image">Subir nueva imagen de perfil:</label>
+            <input type="file" id="profile-image" name="profile-image">
+        </div>
+        <div class="config-section">
+            <button id="save-settings" name="save-settings" onclick="window.location.href='index.html'">Guardar Configuraciones</button>
+        </div>
+
+        <script>
+            document.getElementById('save-settings').addEventListener('click', function() {
+                alert('Configuración guardada');
+                window.location.href = 'index.html';
+            });
+        </script>
+    </div>
+</body>
+</html>

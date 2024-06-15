@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Django</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/body.css">
+</head>
+<body class="bg-white flex items-center justify-center h-screen">
+    <div class="bg-black p-8 rounded-lg shadow-lg w-96">
+        <h2 class="text-yellow-100 text-3xl font-semibold text-center mb-6">Iniciar Sesión</h2>
+        <div class="space-y-4">
+            <button id="seedLoginButton" class="w-full text-black py-2 px-4 rounded-md hover:bg-indigo-700 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style="background-color: white; border: 2px solid transparent;">Iniciar sesión con Semilla</button>
+            <button id="userLoginButton" class="w-full text-black py-2 px-4 rounded-md hover:bg-indigo-700 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style="background-color: white; border: 2px solid transparent;">Iniciar sesión con Usuario y Contraseña</button>
+        </div>
+        <form id="seedLoginForm" class="space-y-4 mt-4 hidden">
+            <div>
+                <label for="seed" class="text-yellow-100 text-gray-700">Semilla</label>
+                <input type="text" id="seed" name="seed" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <button type="button" onclick="submitSeedLogin()" class="w-full bg-white text-black py-2 px-4 rounded-md hover:bg-white hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">Iniciar sesión</button>
+            </div>
+        </form>
+        <form id="userLoginForm"  class="space-y-4 mt-4 hidden">
+            <div>
+                {% csrf_token %}
+                <label for="username" class="block text-gray-700">Nombre de usuario</label>
+                <input type="text" id="username" name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                {% csrf_token %}
+                <label for="password" class="block text-gray-700">Contraseña</label>
+                <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <p class="text-center text-gray-500 mt-4">
+                ¿No tienes cuenta? <a href="{% url 'register' %}" class="text-indigo-600 hover:text-indigo-800">Regístrate aquí</a>
+            </p>
+            <div>
+                <button type="button" onclick="submitUserLogin()" class="w-full bg-green-600 text-black py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" style="background-color: white; border: 2px solid black;">Iniciar sesión</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const seedLoginButton = document.getElementById('seedLoginButton');
+            const userLoginButton = document.getElementById('userLoginButton');
+            const seedLoginForm = document.getElementById('seedLoginForm');
+            const userLoginForm = document.getElementById('userLoginForm');
+
+            seedLoginButton.addEventListener('click', function() {
+                seedLoginForm.classList.remove('hidden');
+                userLoginForm.classList.add('hidden');
+            });
+
+            userLoginButton.addEventListener('click', function() {
+                userLoginForm.classList.remove('hidden');
+                seedLoginForm.classList.add('hidden');
+            });
+        });
+
+        function submitSeedLogin() {
+            const seed = document.getElementById('seed').value;
+            // Realiza la verificación del inicio de sesión usando AJAX o fetch
+            // y envía los datos al backend de Django para autenticación.
+        }
+        function submitUserLogin() {
+            window.location.href = '/'; // Redirigir al usuario a la página indicada
+        }
+        
+
+    </script>
+</body>
+</html>
