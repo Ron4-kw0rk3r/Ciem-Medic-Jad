@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,37 +9,36 @@
     <link rel="stylesheet" href="../../static/body.css">
 </head>
 <body class="bg-white flex items-center justify-center h-screen">
-    <div class="bg-black p-8 rounded-lg shadow-lg w-96">
-        <h2 class="text-yellow-100 text-3xl font-semibold text-center mb-6">Iniciar Sesión</h2>
+    <div class="bg-gray-200 border-black border-opacity-50 border-2 p-8 rounded-lg shadow-lg w-96">
+        <h2 class="text-gray-700 text-3xl font-semibold text-center mb-6">Iniciar Sesión</h2>
         <div class="space-y-4">
-            <button id="seedLoginButton" class="w-full text-black py-2 px-4 rounded-md hover:bg-indigo-700 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style="background-color: white; border: 2px solid transparent;">Iniciar sesión con Semilla</button>
-            <button id="userLoginButton" class="w-full text-black py-2 px-4 rounded-md hover:bg-indigo-700 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style="background-color: white; border: 2px solid transparent;">Iniciar sesión con Usuario y Contraseña</button>
+            <button id="seedLoginButton" class="w-full text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" style="background-color: white; border: 2px solid transparent;">Iniciar sesión con Semilla</button>
+            <button id="userLoginButton" class="w-full text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" style="background-color: white; border: 2px solid transparent;">Iniciar sesión con Usuario y Contraseña</button>
         </div>
         <form id="seedLoginForm" class="space-y-4 mt-4 hidden">
             <div>
-                <label for="seed" class="text-yellow-100 text-gray-700">Semilla</label>
-                <input type="text" id="seed" name="seed" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <label for="seed" class="text-gray-700">Semilla</label>
+                <input type="text" id="seed" name="seed" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
             </div>
             <div>
-                <button type="button" onclick="submitSeedLogin()" class="w-full bg-white text-black py-2 px-4 rounded-md hover:bg-white hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">Iniciar sesión</button>
+                <button type="button" onclick="submitSeedLogin()" class="w-full bg-white text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">Iniciar sesión</button>
             </div>
         </form>
         <form id="userLoginForm"  class="space-y-4 mt-4 hidden">
             <div>
-                {% csrf_token %}
                 <label for="username" class="block text-gray-700">Nombre de usuario</label>
-                <input type="text" id="username" name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="text" id="username" name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
             </div>
             <div>
-                {% csrf_token %}
+                
                 <label for="password" class="block text-gray-700">Contraseña</label>
-                <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
             </div>
             <p class="text-center text-gray-500 mt-4">
-                ¿No tienes cuenta? <a href="{% url 'register' %}" class="text-indigo-600 hover:text-indigo-800">Regístrate aquí</a>
+                ¿No tienes cuenta? <a href="register.html" class="text-gray-700 hover:text-gray-900">Regístrate aquí</a>
             </p>
             <div>
-                <button type="button" onclick="submitUserLogin()" class="w-full bg-green-600 text-black py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" style="background-color: white; border: 2px solid black;">Iniciar sesión</button>
+                <button type="button" onclick="submitUserLogin()" class="w-full bg-white text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" style="background-color: white; border: 2px solid black;">Iniciar sesión</button>
             </div>
         </form>
     </div>
@@ -68,10 +66,13 @@
             // y envía los datos al backend de Django para autenticación.
         }
         function submitUserLogin() {
-            window.location.href = '/'; // Redirigir al usuario a la página indicada
+            
+            // Ocultar los botones de iniciar sesión y registrarse en la página de inicio
+            
+            localStorage.setItem('userLoggedIn', 'true');
+            window.location.href = '/';
         }
-        
-
     </script>
 </body>
 </html>
+

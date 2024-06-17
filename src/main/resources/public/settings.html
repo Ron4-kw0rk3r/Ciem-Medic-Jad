@@ -63,12 +63,23 @@
             <h2>Seleccionar motor de búsqueda</h2>
             <label for="search-engine">Motor de búsqueda predeterminado:</label>
             <select id="search-engine" name="search-engine">
-                <option value="google">Google</option>
-                <option value="bing">Bing</option>
-                <option value="duckduckgo">DuckDuckGo</option>
-                <option value="yahoo">Yahoo</option>
+                <option value="PubMed-Basic">PubMed-Basic</option>
+                <option value="Google-SyncsAll">Google-SyncsAll</option>
+                <option value="Search-NGx">Search-NGx</option>
+                <option value="Redalyc">Redalyc</option>
+                <option value="MedSearch">MedSearch - Motor de búsqueda médica</option>
             </select>
+
+
         </div>
+
+        <script>
+            document.getElementById('search-engine').addEventListener('change', function() {
+                var selectedEngine = this.value;
+                localStorage.setItem('selectedSearchEngine', selectedEngine);
+                console.log('Motor de búsqueda seleccionado guardado:', selectedEngine);
+            });
+        </script>
         <div class="config-section">
             <h2>Cambiar nombre de perfil</h2>
             <label for="profile-name">Nombre de perfil:</label>
@@ -102,8 +113,12 @@
         </div>
 
         <script>
-            document.getElementById('save-settings').addEventListener('click', function() {
-                alert('Configuración guardada');
+            document.getElementById('save-settings').addEventListener('click', function(event) {
+                
+                // Muestra un alerta con el motor seleccionado
+                console.log('Motor de búsqueda seleccionado: ' + selectedEngine + ' ha sido guardado como predeterminado.');
+                
+                // Redirige a index.html que debería leer la configuración guardada
                 window.location.href = 'index.html';
             });
         </script>

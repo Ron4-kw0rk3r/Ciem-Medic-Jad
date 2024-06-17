@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda con Google CSE</title>
+
+    <style>
+        /* Estilos CSS para los resultados de búsqueda */
+        .search-result {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-result h2 {
+            margin-top: 0;
+        }
+        .search-result p {
+            margin-bottom: 5px;
+        }
+        .search-result a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Formulario de búsqueda -->
+    <form id="searchForm" onsubmit="return false;">
+        <input type="text" id="searchInput" placeholder="Ingresa tu búsqueda...">
+        <button type="button" onclick="performSearch()">Buscar</button>
+    </form>
+
+    <!-- Contenedor para mostrar los resultados de búsqueda -->
+    <div id="searchResultsContainer">
+        <!-- Aquí se mostrarán los resultados de búsqueda -->
+    </div>
+
+    <script>
+        function performSearch() {
+            var query = document.getElementById('searchInput').value.trim(); // Obtener el término de búsqueda
+            
+            // Reemplaza 'tu_cx_de_google_cse' con tu propio ID de Google CSE
+            var cx = '1006b4e345d3f4aed';
+
+            // URL para realizar la búsqueda directamente a través de Google CSE JSON API
+            var url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBsazN3igykfiKh1yfn2ovz-OOcvlOycOY&cx=' + cx + '&q=' + encodeURIComponent(query);
+
+            // Realizar la solicitud GET a la API de Google CSE
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    showSearchResults(data.items); // Mostrar los resultados obtenidos
+                })
+                .catch(error => {
+                    console.error('Error al obtener resultados de búsqueda:', error);
+                });
+        }
+
+        function showSearchResults(results) {
+            var container = document.getElementById('searchResultsContainer');
+            container.innerHTML = ''; // Limpiar resultados anteriores
+
+            if (results && results.length > 0) {
+                results.forEach(result => {
+                    var title = result.title;
+                    var snippet = result.snippet; // Descripción del resultado
+                    var link = result.link;
+
+                    // Crear elementos HTML para mostrar los resultados
+                    var resultElement = document.createElement('div');
+                    resultElement.classList.add('search-result');
+                    resultElement.innerHTML = `
+                        <h2><a href="${link}" target="_blank">${title}</a></h2>
+                        <p>${snippet}</p>
+                        <p><a href="${link}" target="_blank">${link}</a></p>
+                    `;
+                    container.appendChild(resultElement);
+                });
+            } else {
+                container.innerHTML = '<p>No se encontraron resultados para la búsqueda.</p>';
+            }
+        
+        }
+    </script>
+</body>
+</html>

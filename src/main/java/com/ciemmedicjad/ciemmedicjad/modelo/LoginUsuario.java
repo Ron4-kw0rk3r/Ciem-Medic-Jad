@@ -2,13 +2,10 @@ package com.ciemmedicjad.ciemmedicjad.modelo;
 
 
 import javax.persistence.*;
-
-import com.ciemmedicjad.ciemmedicjad.Usuario;
-// The import statement is removed to fix the conflict
-
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
+import com.ciemmedicjad.ciemmedicjad.Usuario;
 
 
 
@@ -71,3 +68,4 @@ public class LoginUsuario {
         this.usuario = usuario;
     }
 }
+

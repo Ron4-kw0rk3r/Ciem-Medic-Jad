@@ -1,32 +1,20 @@
+//package com.ciemmedicjad.ciemmedicjad;
 package com.ciemmedicjad.ciemmedicjad;
-import javax.persistence.*;
 
 
 
-@Entity
-@Table(name = "Usuarios")
+//import javax.persistence.*;
+
+
+
 public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long usuario_id;
-
-    @Column(name = "nombre")
     private String nombre;
-
-    @Column(name = "email")
+    private String apellido;
     private String email;
+    private String telefono;
+    private String password;
 
-    // Constructor, getters y setters
-    public Usuario() {}
-
-    public Long getUsuarioId() {
-        return usuario_id;
-    }
-
-    public void setUsuarioId(Long usuario_id) {
-        this.usuario_id = usuario_id;
-    }
-
+    // Getters y setters
     public String getNombre() {
         return nombre;
     }
@@ -35,11 +23,35 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

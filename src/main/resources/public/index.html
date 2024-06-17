@@ -98,12 +98,17 @@
                 </li>
                 </ul>
 
+               
+
                 <div class="footer">
                     <p style="color: rgb(194, 194, 194);"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Ciem Medic Jad Plataforma de Medicina y Tecnologia <i class="icon-heart" aria-hidden="true"></i> por <a href="https://github.com" target="_blank" style="color: rgb(32, 84, 158);">CiemMedicJad.git.com</a>
                     </p>
                 </div>
+
+
             </div>
+            
             </nav>
             <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5">
@@ -151,18 +156,63 @@
                 </div>
                 <script>
                     // Simulación de verificación de sesión de usuario
-                    var userLoggedIn = false; // Cambiar a true si el usuario está registrado y ha iniciado sesión
-
-                    if (userLoggedIn) {
-                        document.querySelectorAll('#login-register-buttons').forEach(function(button) {
+                    var userLoggedIn = localStorage.getItem('userLoggedIn');
+                    console.log('User logged in:', userLoggedIn);
+                    const loginRegisterButtons = document.querySelectorAll('.nav-item a.btn');
+                    
+                    if (userLoggedIn==='true') {
+                        loginRegisterButtons.forEach(button => {
                             button.style.display = 'none';
                         });
+                        let userButton = document.createElement('button');
+                        userButton.textContent = 'Usuario';
+                        userButton.className = 'btn btn-primary';
+                        document.querySelector('#navbarSupportedContent').appendChild(userButton);
+
+                        let logoutListItem = document.createElement('li');
+                        logoutListItem.className = 'nav-item';
+                        let logoutButton = document.createElement('a');
+                        logoutButton.className = 'btn';
+                        logoutButton.style.margin = '4px 2px';
+                        logoutButton.style.border = '2px solid black';
+                        logoutButton.style.transition = 'border-color 0.3s ease';
+                        logoutButton.href = '#';
+                        logoutButton.textContent = 'Cerrar Sesión';
+                        logoutButton.onmouseover = function() {
+                            this.style.borderColor = 'white';
+                        };
+                        logoutButton.onmouseout = function() {
+                            this.style.borderColor = 'black';
+                        };
+                        logoutButton.onclick = function() {
+                            localStorage.setItem('userLoggedIn', 'false');
+                            window.location.reload();
+                        };
+                        logoutListItem.appendChild(logoutButton);
+                        document.querySelector('#navbarSupportedContent ul').insertBefore(logoutListItem, document.querySelector('#navbarSupportedContent ul').childNodes[0]);
                     } else {
-                        document.querySelectorAll('#login-register-buttons').forEach(function(button) {
-                            button.style.display = 'block';
-                        });
+                        logoutButton.onclick = function() {
+                            localStorage.setItem('userLoggedIn', 'false');
+                            window.location.reload(); // This will refresh the page, causing the script to re-evaluate the login state and adjust the UI accordingly.
+                        };
+                        
+                        // Ensure that the login and register buttons are displayed and user-specific buttons are hidden when logged out
+                        if (!userLoggedIn) {
+                            loginRegisterButtons.forEach(button => {
+                                button.style.display = 'block'; // Show login and register buttons
+                            });
+                            if (userButton) {
+                                userButton.style.display = 'none'; // Hide user button
+                            }
+                            if (logoutButton) {
+                                logoutButton.style.display = 'none'; // Hide logout button
+                            }
+                        }
                     }
                 </script>
+            <script>
+                
+            </script>
             </div>
             </nav>
 
@@ -186,30 +236,52 @@
                     </div>
                     
                 </div>
+                
+                <form id="searchForm">
 
-                <form id="searchForm" onsubmit="return false;">
+                    <div class="flex justify-center mb-4">
+                        <label for="searchEngineSelector" class="mr-2">Motor de búsqueda:</label>
+                        <select id="searchEngineSelector" name="searchEngineSelector" onchange="setSearchEngine()">
+                            <option value="PubMed-Basic">PubMed-Basic</option>
+                            <option value="Google-SyncsAll">Google-SyncsAll</option>
+                            <option value="Search-NGx">Search-NGx</option>
+                            <option value="Redalyc">Redalyc</option>
+                            <option value="MedSearch">MedSearch</option>
+                        </select>
+                    </div>
+                    <script>
+                        function setSearchEngine() {
+                            var selectedEngine = document.getElementById('searchEngineSelector').value;
+                            localStorage.setItem('preferredSearchEngine', selectedEngine);
+                            console.log('Motor de búsqueda seleccionado:', selectedEngine);
+                        }
+                    </script>
                     <div class="flex justify-center mb-4">
                         <input id="cptsearch" type="text" class="w-3/4 p-2 border-2 border-black rounded text-center" name="cptsearch" placeholder="Comienza a buscar...">
                         <div class="flex justify-center">
-                            <button id="upperbuttom" type="button" class="bg-black text-white py-2 px-8 rounded" style="font-family: 'Antic Slab', cursive; transition: transform 0.2s;" onmouseover="this.style.transform='scale(0.95)'" onmouseout="this.style.transform='scale(1)'" onclick="performSearch()">BUSCAR</button>
+                            <button id="upperButton" type="button" class="bg-black text-white py-2 px-8 rounded" style="font-family: 'Antic Slab', cursive; transition: transform 0.2s;" onmouseover="this.style.transform='scale(0.95)'" onmouseout="this.style.transform='scale(1)'" onclick="performSearch()">BUSCAR</button>
                         </div>
                     </div>
                 </form>
-
-                <div id="gcse-searchresults-only" class="results" style="display: block;"></div>
-
+                
+                <div id="searchResultsContainer"></div>
+                    <!-- Aquí se mostrarán los resultados de búsqueda -->
                 <script>
-                    function performSearch() {
-                        var query = document.getElementById('cptsearch').value;
-                        // Esperar a que el elemento de búsqueda de Google esté disponible
-                        google.search.cse.element.render({
-                            div: "gcse-searchresults-only",
-                            tag: "searchresults-only"
-                        });
-                        google.search.cse.element.getElement("gcse-searchresults-only").execute(query);
-                    }
-                </script>
+                    // Establecer el motor de búsqueda por defecto al cargar la página
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Leer el motor de búsqueda preferido desde el almacenamiento local
+                        var defaultSearchEngine = localStorage.getItem('preferredSearchEngine');
                         
+                        // Si no hay un motor de búsqueda almacenado, no establecer ningún valor por defecto
+                        if (!defaultSearchEngine) {
+                            console.log('No hay motor de búsqueda por defecto establecido.');
+                        } else {
+                            console.log('Motor de búsqueda cargado desde el almacenamiento local:', defaultSearchEngine);
+                        }
+                    });
+                </script>
+            
+                <script src="js/motorselect.js"></script>
                 <div id="infoSection" class="flex justify-center space-x-4 mt-8">
                     <div class="bg-gray-200 border-black border-opacity-50 border-2 p-4 text-gray-700">
                         <h3 class="font-bold text-gray-700">Sobre la Página</h3>

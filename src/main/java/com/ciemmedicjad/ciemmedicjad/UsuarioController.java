@@ -1,21 +1,24 @@
 package com.ciemmedicjad.ciemmedicjad;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+@CrossOrigin // Ajusta según sea necesario
 
 @RestController
-@RequestMapping("/api/usuarios")
 public class UsuarioController {
 
-    @Autowired
-    private Usuariorepo usuarioRepository;
+    @PostMapping("/registrousuario")
+    public ResponseEntity<?> registrarUsuario(@ModelAttribute Usuario usuario) {
+        // Aquí implementarías la lógica para procesar los datos del usuario
+        // Por ejemplo, guardar los datos en una base de datos
 
-    @PostMapping("/register")
-    public ResponseEntity<?> registrarUsuario(@RequestBody Usuario usuario) {
-        // Aquí puedes agregar validaciones antes de guardar el usuario
-        Usuario nuevoUsuario = usuarioRepository.save(usuario);
-        return ResponseEntity.ok(nuevoUsuario);
+        // Simulando una respuesta exitosa
+        return ResponseEntity.ok().body("{\"success\": true}");
     }
 }

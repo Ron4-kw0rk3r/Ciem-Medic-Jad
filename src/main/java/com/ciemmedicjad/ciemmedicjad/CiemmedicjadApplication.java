@@ -5,16 +5,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+///import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.context.annotation.ComponentScan;
+
+import javax.servlet.http.HttpServletResponse;
 
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.ciemmedicjad.ciemmedicjad")
 @EntityScan(basePackages = "com.ciemmedicjad.ciemmedicjad.modelo")
-@EnableJpaRepositories(basePackages = "com.ciemmedicjad.ciemmedicjad.repositorio")
+//@EnableJpaRepositories(basePackages = "com.ciemmedicjad.ciemmedicjad.repositorio")
 
 
 public class CiemmedicjadApplication {
@@ -37,6 +39,11 @@ public class CiemmedicjadApplication {
                 registry.addViewController("/").setViewName("forward:/index.html");
             }
         };
+    }
+
+    public void handleRequest(HttpServletResponse response) {
+        response.setStatus(HttpServletResponse.SC_FOUND); // 302 redirect
+        response.setHeader("Location", "/loginv.html");
     }
 
 }
