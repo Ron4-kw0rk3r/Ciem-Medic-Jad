@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuraciones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,7 +47,7 @@
             border-radius: 4px;
         }
         .config-section button {
-            background-color: #202335;
+            background-color: #161929;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -54,74 +57,113 @@
         .config-section button:hover {
             background-color: #202335;
         }
+
+        
+
+
+        .antic-slab-regular {
+            font-family: 'Antic Slab', cursive;
+        }
+
     </style>
 </head>
 <body>
     <h1>Configuraciones</h1>
-    <div class="config-container">
-        <div class="config-section">
-            <h2>Seleccionar motor de búsqueda</h2>
-            <label for="search-engine">Motor de búsqueda predeterminado:</label>
-            <select id="search-engine" name="search-engine">
-                <option value="PubMed-Basic">PubMed-Basic</option>
-                <option value="Google-SyncsAll">Google-SyncsAll</option>
-                <option value="Search-NGx">Search-NGx</option>
-                <option value="Redalyc">Redalyc</option>
-                <option value="MedSearch">MedSearch - Motor de búsqueda médica</option>
-            </select>
-
-
-        </div>
-
+    <div class="config-container">  
+        <form id="settings-form" onsubmit="event.preventDefault(); submitData();">
+            <section style="font-family: 'Antic Slab', cursive;">
+                <h1><strong>Actividad del usuario</strong></h1>
+                <div class="generation-section">
+                    <h2>Información de Usuario</h2>
+                    <p>Hora: <span id="current-time"></span></p>
+                    <p>Tiempo: <span id="current-date"></span></p>
+                    <p>Estado de sesión: <span id="login-status"></span></p>
+                </div>
+            </section>
+            <br>
+            <div class="config-section">
+                <h2>Seleccionar motor de búsqueda</h2>
+                <label for="search-engine">Motor de búsqueda predeterminado:</label>
+                <select id="search-engine" name="search-engine">
+                    <option value="PubMed-Basic">PubMed-Basic</option>
+                    <option value="Google-SyncsAll">Google-SyncsAll</option>
+                    <option value="Sear-XNG">Sear-XNG</option>
+                    <option value="Google">Google</option>
+                    <option value="MedSearch">MedSearch - Motor de búsqueda médica</option>
+                </select>
+            </div>
+            <div class="config-section">
+                <h2>Cambiar nombre de perfil</h2>
+                <label for="profile-name">Nombre de perfil:</label>
+                <input type="text" id="profile-name" name="profile-name">
+            </div>
+            <div class="config-section">
+                <h2>Generación de código</h2>
+                <label for="generated-code">ID Usuario:</label>
+                <input type="number" id="usuario-id" name="usuario_id" required>
+            </div>
+            
+            <div class="config-section">
+                <h2>Exportación de datos</h2>
+                <label for="data-export">Exportar datos:</label>
+                <button id="data-export" name="data-export">Exportar</button>
+            </div>
+            <div class="config-section">
+                <h2>Tipo de selección</h2>
+                <label for="selection-type">Tipo de selección:</label>
+                <select id="selection-type" name="selection-type">
+                    <option value="simple">Simple</option>
+                    <option value="multiple">Múltiple</option>
+                    <option value="multiple">Bloque</option>
+                </select>
+            </div>
+            <div class="config-section">
+                <h2>Notificaciones</h2>
+                <label for="notifications">Activar notificaciones:</label>
+                <input type="checkbox" id="notifications" name="notifications">
+            </div>
+            <div class="config-section">
+                <h2>Cambiar imagen de perfil</h2>
+                <label for="profile-image">Subir nueva imagen de perfil:</label>
+                <input type="file" id="profile-image" name="profile-image">
+            </div>
+            <div class="config-section">
+                <button type="submit" id="save-settings" >Guardar Configuraciones</button>
+            </div>
+        </form>
+        
         <script>
-            document.getElementById('search-engine').addEventListener('change', function() {
-                var selectedEngine = this.value;
-                localStorage.setItem('selectedSearchEngine', selectedEngine);
-                console.log('Motor de búsqueda seleccionado guardado:', selectedEngine);
-            });
-        </script>
-        <div class="config-section">
-            <h2>Cambiar nombre de perfil</h2>
-            <label for="profile-name">Nombre de perfil:</label>
-            <input type="text" id="profile-name" name="profile-name">
-        </div>
-        <div class="config-section">
-            <h2>Exportación de datos</h2>
-            <label for="data-export">Exportar datos:</label>
-            <button id="data-export" name="data-export">Exportar</button>
-        </div>
-        <div class="config-section">
-            <h2>Tipo de selección</h2>
-            <label for="selection-type">Tipo de selección:</label>
-            <select id="selection-type" name="selection-type">
-                <option value="simple">Simple</option>
-                <option value="multiple">Múltiple</option>
-            </select>
-        </div>
-        <div class="config-section">
-            <h2>Notificaciones</h2>
-            <label for="notifications">Activar notificaciones:</label>
-            <input type="checkbox" id="notifications" name="notifications">
-        </div>
-        <div class="config-section">
-            <h2>Cambiar imagen de perfil</h2>
-            <label for="profile-image">Subir nueva imagen de perfil:</label>
-            <input type="file" id="profile-image" name="profile-image">
-        </div>
-        <div class="config-section">
-            <button id="save-settings" name="save-settings" onclick="window.location.href='index.html'">Guardar Configuraciones</button>
-        </div>
+            
+            function submitData() {
+                
+                
+                const FormData = {
+                    motor_busqueda: document.getElementById('search-engine').value,
+                    nombreperfil: document.getElementById('profile-name').value,
+                    imgperfil: document.getElementById('profile-image').value,
+                    notificaciones: document.getElementById('notifications').checked,
+                    tipodeseleccion: document.getElementById('selection-type').value
+                };
 
-        <script>
-            document.getElementById('save-settings').addEventListener('click', function(event) {
-                
-                // Muestra un alerta con el motor seleccionado
-                console.log('Motor de búsqueda seleccionado: ' + selectedEngine + ' ha sido guardado como predeterminado.');
-                
-                // Redirige a index.html que debería leer la configuración guardada
-                window.location.href = 'index.html';
-            });
+                fetch('/addData', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(FormData)
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
         </script>
+        
+        <script src="js/datetimeonpub.js"></script>
+        
     </div>
 </body>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpolación de Newton</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.2/math.min.js"></script>
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4">Interpolación de Newton</h1>
+    <form id="dataForm" class="mb-3">
+        <div id="inputContainer">
+            <table class="table" id="dataPointsTable">
+                <thead>
+                    <tr>
+                        <th>x</th>
+                        <th>f(x)</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="form-group">
+                        <td><input type="number" class="form-control" name="xValue[]" placeholder="x" required></td>
+                        <td><input type="number" class="form-control" name="fxValue[]" placeholder="f(x)" required></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="removeDataField(this)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" class="btn btn-primary mb-2" onclick="addDataField()">Agregar</button>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Grado del polinomio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="number" class="form-control" id="degree" placeholder="Grado del polinomio" required></td>
+                <td>
+                    <button type="button" class="btn btn-success mb-2" onclick="generateModel()">Generar Modelo</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Modelo Matemático</h2>
+    <p id="model" class="mb-3"></p>
+    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <canvas id="lineChart"></canvas>
+    </div>
+    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <canvas id="scatterChart"></canvas>
+    </div>
+    <script src="js/scrippter.js"></script>
+    <script>
+        document.getElementById('model-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            fetch('terrenfy.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                    // Mostrar los scripts incluidos en terrenfy.html
+                    const scripts = new DOMParser().parseFromString(data, 'text/html').querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.src = script.src;
+                        document.body.appendChild(newScript);
+                    });
+                })
+                .catch(error => console.error('Error al cargar la página:', error));
+        });
+    </script>
+</body>
+</html>

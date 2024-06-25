@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpolación de Newton</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4">Interpolación de Newton</h1>
+    <form id="dataForm" class="mb-3">
+        <div id="inputContainer">
+            <table class="table" id="dataPointsTable">
+                <thead>
+                    <tr>
+                        <th>x</th>
+                        <th>f(x)</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="form-group">
+                        <td><input type="number" class="form-control" name="xValue[]" placeholder="x" required></td>
+                        <td><input type="number" class="form-control" name="fxValue[]" placeholder="f(x)" required></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="removeDataField(this)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" class="btn btn-primary mb-2" onclick="addDataField()">Agregar</button>
+            </div>
+            <script>
+                function addDataField() {
+                    var table = document.getElementById('dataPointsTable').getElementsByTagName('tbody')[0];
+                    var newRow = table.insertRow(table.rows.length);
+                    newRow.innerHTML = `
+                        <tr class="form-group">
+                            <td><input type="number" class="form-control" name="xValue[]" placeholder="x" required></td>
+                            <td><input type="number" class="form-control" name="fxValue[]" placeholder="f(x)" required></td>
+                            <td><button type="button" class="btn btn-danger" onclick="removeDataField(this)">Eliminar</button></td>
+                        </tr>
+                    `;
+                }
+
+                function removeDataField(button) {
+                    var row = button.parentNode.parentNode;
+                    row.parentNode.removeChild(row);
+                }
+            </script>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Grado del polinomio</th>
+                <th>Dimension N=</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="number" class="form-control" id="degree" placeholder="Grado del polinomio" required></td>
+                <td><input type="number" class="form-control" id="dimension" placeholder="Dimension" required></td>
+                <td>
+                    <button type="button" class="btn btn-success mb-2" onclick="generateModel()">Generar Modelo</button>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Modelo Matemático</h2>
+    <p id="model" class="mb-3"></p>
+    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <canvas id="lineChart"></canvas>
+    </div>
+    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <canvas id="scatterChart"></canvas>
+    </div>
+    <script src="js/scrippterDD.js"></script>
+</body>
+</html>
+
+
+<!-- 
+
+
+<div>
+    <h2>Newton's Interpolation Polynomial</h2>
+    <form id="dataForm">
+        <label for="xValues">X values (comma separated):</label>
+        <input type="text" id="xValues" name="xValues">
+        <label for="yValues">Y values (comma separated):</label>
+        <input type="text" id="yValues" name="yValues">
+        <label for="polynomialDegree">Polynomial Degree:</label>
+        <input type="number" id="polynomialDegree" name="polynomialDegree">
+        <button type="button" onclick="generatePolynomial()">Generate Polynomial</button>
+    </form>
+    <div id="polynomialProcedure"></div>
+    <canvas id="polynomialChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function generatePolynomial() {
+        const xValues = document.getElementById('xValues').value.split(',').map(Number);
+        const yValues = document.getElementById('yValues').value.split(',').map(Number);
+        const degree = parseInt(document.getElementById('polynomialDegree').value);
+
+        // Placeholder for polynomial calculation
+        const coefficients = calculateNewtonPolynomial(xValues, yValues, degree);
+
+        // Display the polynomial procedure
+        document.getElementById('polynomialProcedure').innerHTML = 'Polynomial coefficients: ' + coefficients.join(', ');
+
+        // Plotting the polynomial
+        plotPolynomial(xValues, yValues, coefficients);
+    }
+
+    function calculateNewtonPolynomial(x, y, degree) {
+        // This function should be replaced with actual logic to calculate Newton's polynomial
+        // For demonstration, return an array of coefficients
+        return Array.from({length: degree + 1}, (_, i) => Math.random().toFixed(2));
+    }
+
+    function plotPolynomial(x, y, coefficients) {
+        const ctx = document.getElementById('polynomialChart').getContext('2d');
+        const labels = x;
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Interpolation Polynomial',
+                data: y,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+</script>
+-->

@@ -41,14 +41,14 @@
 
 
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" style="background-color: #202332; border: 2px solid #000;">
+        <nav id="sidebar" style="background-color: #161929; border: 2px solid #000;">
             <div class="p-4 pt-5">
-                <div class="mi-configurac" style="background: #202332; margin-left: -22px; margin-right: -22px; margin-top: -5px; " >
+                <div class="mi-configurac" style="background: #161929; margin-left: -22px; margin-right: -22px; margin-top: -5px; " >
                     <img src="res/slogan-resv2.png" style="margin:auto; display:block; width: 50%; transform: scale(1.3);" alt="Slogan">
                 </div>
                 
                 <div class="flex items-center" >
-                    <a href="#" class="img logo rounded-full mb-5 bg-cover bg-center" style="background-image: url(res/doraemon.jpg); width: 100px; height: 100px; border: 2px solid #000; display: block;"></a>
+                    <a href="settings.html" class="img logo rounded-full mb-5 bg-cover bg-center" id="profile-image-preview" style="   width: 100px; height: 100px; border: 2px solid #000; display: block; border-radius: 50%;"><img id="profile-image-preview" src="res/doraemon.jpg" alt="Profile Image" style="width: 100%; height: 100%; border-radius: 50%;"></a>
                     <p class="ml-4">Cuenta: <span id="seed-id"></span></p>
                     <script>
                         fetch('/generate-seed')
@@ -56,14 +56,36 @@
                             .then(seed => {
                                 document.getElementById('seed-id').textContent = seed;
                             });
+
+                        
+                        // Función para obtener el valor de un parámetro específico de la URL
+                        function getQueryParam(param) {
+                            const urlParams = new URLSearchParams(window.location.search);
+                            return urlParams.get(param);
+                        }
+
+                        // Usar la función para obtener la URL de la imagen
+                        const imageUrl = getQueryParam('imageURL');
+
+                        // Si existe una URL de imagen, establecerla como src de un elemento img
+                        if (imageUrl) {
+                            document.getElementById('profile-image-preview').src = imageUrl;
+                        }    
+
+                            
+
                     </script>
+
+
+                    <!-- Agrega este script en settings.html -->
+                   
                 </div>
                 <ul class="list-unstyled components mb-5">
                 <li class="active" style=" color: rgb(194, 194, 194);">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="color: rgb(194, 194, 194);">Inicio</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu" >
                         <li>
-                            <a href="demo.html" style="color: rgb(194, 194, 194);">Actividades</a>
+                            <a href="/" style="color: rgb(194, 194, 194);">Actividades</a>
                         </li>
                         <li>
                             <a href="#" style="color: rgb(194, 194, 194);">Sessiones</a>
@@ -74,25 +96,46 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="settings.html" id="configuracion_lk" style="color: rgb(194, 194, 194);">Configuracion</a>
+                    <a href="settings.html" id="configuracion_den" style="color: rgb(194, 194, 194);">Configuracion</a>
                 </li>
                 <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="color: rgb(194, 194, 194);">Articulos</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="#" style="color: rgb(194, 194, 194);">Page 1</a>
+                        <a href="#" style="color: rgb(194, 194, 194);">Regitros</a>
                     </li>
                     <li>
-                        <a href="#" style="color: rgb(194, 194, 194);">Page 2</a>
+                        <a href="#" style="color: rgb(194, 194, 194);">Paginas Cantidad:</a>
                     </li>
                     <li>
-                        <a href="#" style="color: rgb(194, 194, 194);">Page 3</a>
+                        <a href="#" style="color: rgb(194, 194, 194);">Por ahora:</a>
                     </li>
                 </ul>
                 </li>
                 <li>
                 <a href="#" style="color: rgb(194, 194, 194);">Favoritos</a>
                 </li>
+                <li>
+                    <a id="model-link" href="terrenfy.html" style="color: rgb(194, 194, 194);">Modelo Matematico</a>
+                </li>
+                <script>
+                    document.getElementById('model-link').addEventListener('click', function(event) {
+                        event.preventDefault();
+                        fetch('terrenfy.html')
+                            .then(response => response.text())
+                            .then(data => {
+                                document.getElementById('content').innerHTML = data;
+                                // Mostrar los scripts incluidos en terrenfy.html
+                                const scripts = new DOMParser().parseFromString(data, 'text/html').querySelectorAll('script');
+                                scripts.forEach(script => {
+                                    const newScript = document.createElement('script');
+                                    newScript.src = script.src;
+                                    document.body.appendChild(newScript);
+                                });
+                            })
+                            .catch(error => console.error('Error al cargar la página:', error));
+                    });
+                </script>
                 <li>
                 <a href="about.html" style="color: rgb(194, 194, 194);">Sobre CiemMedicJad</a>
                 </li>
@@ -102,7 +145,7 @@
 
                 <div class="footer">
                     <p style="color: rgb(194, 194, 194);"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Ciem Medic Jad Plataforma de Medicina y Tecnologia <i class="icon-heart" aria-hidden="true"></i> por <a href="https://github.com" target="_blank" style="color: rgb(32, 84, 158);">CiemMedicJad.git.com</a>
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Ciem Medic Jad Plataforma de Medicina y Tecnologia <i class="icon-heart" aria-hidden="true"></i> por <a href="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad" target="_blank" style="color: rgb(32, 84, 158);">CiemMedicJad.git.com</a>
                     </p>
                 </div>
 
@@ -130,7 +173,7 @@
                         <a class="nav-link" href="#">Otros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">MotoresPersonalizados</a>
+                        <a class="nav-link" href="motorespers.html">MotoresPersonalizados</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bibliopage.html">Biblioteca-Destino</a>

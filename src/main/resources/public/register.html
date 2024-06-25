@@ -14,7 +14,7 @@
 <body class="flex items-center justify-center h-screen" style=" background: white">
     <div class="bg-black p-8 rounded-lg shadow-lg w-96">
         <h2 class="text-white text-2xl font-bold mb-6 text-center">Registro <spam style="color:rgb(255, 255, 255);">Ciem</spam><spam style="color: rgb(58, 122, 186);">Medic Jad</spam></h2>
-        <form id="registrationForm" method="POST" class="space-y-4"  action="/registrousuario">
+        <form id="registrationForm" class="space-y-4"  action="/submit-registro" method="POST">
             <div>
                 
                 <label for="username" class="block text-sm font-medium text-yellow-100">Nombre</label>
@@ -65,26 +65,40 @@
 
 <script>
    
-   document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Previene el envío normal del formulario
-    const form = this;
-    fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = '/loginv.html'; // Redirige a la página de login
-        } else {
-            alert('Error al registrar usuario: ' + data.error);
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error al enviar el formulario.');
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevents the normal form submission
+
+        const registrationData = {
+            nombre: document.getElementById('username').value, // Corrected from 'nombre' to 'username'
+            apellido: document.getElementById('apellido').value,
+            email: document.getElementById('email').value,
+            telefono: document.getElementById('telefono').value,
+            password: document.getElementById('password').value
+        };
+
+        fetch('/submit-registro', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(registrationData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Registro exitoso');
+                window.location.href = '/loginv.html';
+            } else {
+                alert( 'registro: ' + data.message);
+                window.location.href = '/loginv.html';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('procesar el registro.');
+            window.location.href = '/loginv.html';
+        });
     });
-});
    
 </script>
     
