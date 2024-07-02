@@ -10,6 +10,12 @@
 
 <p>Con un objetivo óptimo para complementar su desarrollo y acción en el mercado de la medicina y el aprendizaje, con una coherencia sobre la medicina que se tiene en el país, desarrollando una base de información sobre la medicina natural y métodos de búsqueda automatizada de preferencia en documentos de interés sobre la medicina natural.</p>
 
+## Vistas del Proyecto Desarrollado
+
+
+<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/"  alt="base1">
+<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/"  alt="base2">
+<img src="https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/"  alt="base3">
 
 ## Propósito de Idea a Mejorar
 
