@@ -31,7 +31,7 @@
                 </tbody>
             </table>
             <div>
-                <button type="button" class="btn btn-primary mb-2" onclick="addDataField()">Agregar</button>
+                <button type="button" class="btn mb-2" style="background-color: #161929; color: white;" onclick="addDataField()">Agregar</button>
             </div>
             <script>
                 function addDataField() {
@@ -65,7 +65,7 @@
                 <td><input type="number" class="form-control" id="degree" placeholder="Grado del polinomio" required></td>
                 <td><input type="number" class="form-control" id="dimension" placeholder="Dimension" required></td>
                 <td>
-                    <button type="button" class="btn btn-success mb-2" onclick="generateModel()">Generar Modelo</button>
+                    <button  style="background-color: #161929; color: white;" type="button"  onclick="generateModel()">Generar Modelo</button>
                     
                 </td>
             </tr>
@@ -74,10 +74,10 @@
     <h2>Modelo Matemático</h2>
     <p id="model" class="mb-3"></p>
     <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-        <canvas id="lineChart"></canvas>
+        <center><canvas id="lineChart"></canvas></center>
     </div>
     <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-        <canvas id="scatterChart"></canvas>
+        <center><canvas id="scatterChart"></canvas></center>
     </div>
     <script src="js/scrippterDD.js"></script>
 </body>

@@ -1,5 +1,5 @@
 // Controlador
-package com.ciemmedicjad.ciemmedicjad;
+package com.ciemmedicjad.ciemmedicjad.api;
 //package com.example.interpolation.controller;
 //package com.example.interpolation.controller;
 

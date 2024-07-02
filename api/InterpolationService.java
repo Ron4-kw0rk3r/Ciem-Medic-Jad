@@ -1,27 +1,28 @@
-package com.ciemmedicjad.ciemmedicjad;
+package com.ciemmedicjad.ciemmedicjad.api;
 //package com.example.interpolation.service;
 //package com.example.interpolation.service;
+import java.util.LinkedList;
+
 
 //import com.example.interpolation.model.DataPoint;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.ciemmedicjad.ciemmedicjad.Datapoint;
+
 
 @Service
 public class InterpolationService {
 
-    private List<Datapoint> dataPoints = new ArrayList<>();
-
+    private LinkedList<Datapoint> dataPoints = new LinkedList<>();
     public void addDataPoint(double x, double fx) {
-        dataPoints.add(new Datapoint(x, fx));
+        Datapoint newDataPoint = new Datapoint(x, fx);
+        //dataPoints.add(newDataPoint);
     }
-
     public void clearDataPoints() {
         dataPoints.clear();
     }
 
-    public List<Datapoint> getDataPoints() {
+    public LinkedList<Datapoint> getDataPoints() {
         return dataPoints;
     }
 

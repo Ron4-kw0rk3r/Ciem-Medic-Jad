@@ -11,6 +11,13 @@
 <p>Con un objetivo óptimo para complementar su desarrollo y acción en el mercado de la medicina y el aprendizaje, con una coherencia sobre la medicina que se tiene en el país, desarrollando una base de información sobre la medicina natural y métodos de búsqueda automatizada de preferencia en documentos de interés sobre la medicina natural.</p>
 
 
+## Desarrollo de Ciem Medic Jad 02/07/2024
+
+![logPrev](https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/9dfa2cfa25160c4ba0d463dda40b28f694d6c897/res/base1.png) 
+![logPrev](https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/9dfa2cfa25160c4ba0d463dda40b28f694d6c897/res/base2.png) 
+![logPrev](https://github.com/Ron4-kw0rk3r/Ciem-Medic-Jad/blob/9dfa2cfa25160c4ba0d463dda40b28f694d6c897/res/base3.png) 
+
+
 ## Propósito de Idea a Mejorar
 
 <img src="https://github.com/Ron4-kw0rk3r/Admin-Medico/blob/master/DB/photo_2024-04-16_23-06-14.jpg" alt="Nueva Idea">

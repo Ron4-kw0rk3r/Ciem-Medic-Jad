@@ -23,6 +23,9 @@
     <link rel="icon" href="res/logo.ico" type="image/x-icon">
     
     <script async src="https://cse.google.com/cse.js?cx=1006b4e345d3f4aed"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
     
     <style>
         .gsc-control-cse {
@@ -48,7 +51,10 @@
                 </div>
                 
                 <div class="flex items-center" >
-                    <a href="settings.html" class="img logo rounded-full mb-5 bg-cover bg-center" id="profile-image-preview" style="   width: 100px; height: 100px; border: 2px solid #000; display: block; border-radius: 50%;"><img id="profile-image-preview" src="res/doraemon.jpg" alt="Profile Image" style="width: 100%; height: 100%; border-radius: 50%;"></a>
+                    <a href="settings.html" class="img logo rounded-full mb-5 bg-cover bg-center" id="profile-image-preview" style="width: 100px; height: 100px; border: 2px solid #000; display: block; border-radius: 50%;">
+                        <img id="profile-image-preview" src="res/avatars/apple.jpg" alt="Profile Image" style="width: 100%; height: 100%; border-radius: 50%;">
+                    </a>
+                    
                     <p class="ml-4">Cuenta: <span id="seed-id"></span></p>
                     <script>
                         fetch('/generate-seed')
@@ -65,12 +71,6 @@
                         }
 
                         // Usar la función para obtener la URL de la imagen
-                        const imageUrl = getQueryParam('imageURL');
-
-                        // Si existe una URL de imagen, establecerla como src de un elemento img
-                        if (imageUrl) {
-                            document.getElementById('profile-image-preview').src = imageUrl;
-                        }    
 
                             
 
@@ -118,7 +118,10 @@
                 <li>
                     <a id="model-link" href="terrenfy.html" style="color: rgb(194, 194, 194);">Modelo Matematico</a>
                 </li>
+
+                            
                 <script>
+
                     document.getElementById('model-link').addEventListener('click', function(event) {
                         event.preventDefault();
                         fetch('terrenfy.html')
@@ -128,14 +131,22 @@
                                 // Mostrar los scripts incluidos en terrenfy.html
                                 const scripts = new DOMParser().parseFromString(data, 'text/html').querySelectorAll('script');
                                 scripts.forEach(script => {
-                                    const newScript = document.createElement('script');
-                                    newScript.src = script.src;
-                                    document.body.appendChild(newScript);
+                                    if (script.src) {
+                                        const newScript = document.createElement('script');
+                                        newScript.src = script.src;
+                                        document.body.appendChild(newScript);
+                                        
+                                    } else {
+                                        const inlineScript = document.createElement('script');
+                                        inlineScript.textContent = script.textContent;
+                                        document.body.appendChild(inlineScript);
+                                    }
                                 });
                             })
                             .catch(error => console.error('Error al cargar la página:', error));
                     });
-                </script>
+                </script> 
+                
                 <li>
                 <a href="about.html" style="color: rgb(194, 194, 194);">Sobre CiemMedicJad</a>
                 </li>
